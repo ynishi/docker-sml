@@ -15,6 +15,10 @@ docker run --rm -it ynishi/docker-sml
 # or local build
 docker run --rm -it sml
 ```
+### reuse container(ex. for hisotry)
+```
+docker run -it --name sml ynishi/docker-sml || docker start -i sml
+```
 ### use file example
 ```
 echo "fun x = {x}" > test.sml
