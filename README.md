@@ -2,6 +2,7 @@
 
 * Docker image for Standard ML of New Jersey https://www.smlnj.org/
 * Base image is ubuntu. 
+* DockerTags = version-${sml ver}-${image version}
 
 ## build
 ```
@@ -18,6 +19,10 @@ docker run --rm -it sml
 ### reuse container(ex. for hisotry)
 ```
 docker run -it --name sml ynishi/docker-sml || docker start -i sml
+```
+### pass opts for rlwrap by env
+```
+docker run --rm -it -e RLWRAP_OPTS="-s 10000" ynishi/docker-sml
 ```
 ### use file example
 ```
