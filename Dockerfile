@@ -1,6 +1,5 @@
-FROM ubuntu:eoan-20190813
-
-ENV SML_VERSION v110.79
+FROM public.ecr.aws/ubuntu/ubuntu:latest
+ENV SML_VERSION v110.99.1
 
 RUN apt update \
   && apt install -y \
