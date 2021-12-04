@@ -1,15 +1,27 @@
-FROM ubuntu:eoan-20190813
+FROM debian:stretch-20211201 AS builder
 
-ENV SML_VERSION v110.79
+ENV SML_VERSION v110.99.1
 
 RUN apt update \
   && apt install -y \
-    smlnj \
     rlwrap \
+    wget \
+    build-essential \
+    ml-antlr \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /app
+WORKDIR /tmp/sml
+RUN wget https://smlnj.org/dist/working/110.99.1/config.tgz \
+  && tar -xzf config.tgz \
+  && sh config/install.sh
+
+FROM debian:stretch-20211201
+COPY --from=builder /usr/bin/rlwrap /usr/bin/rlwrap
+COPY --from=builder /tmp/sml /var/lib/sml
+RUN cd /var/lib/sml/bin \
+  && find . |grep -v '^\.$' |xargs -I{} cp -r {} /usr/bin/.
+
 WORKDIR /app
 
 ADD entrypoint.sh /entrypoint.sh
