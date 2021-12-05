@@ -10,7 +10,10 @@
 cd ${os_dir}
 docker build -t sml:latest .
 ```
-
+* use shake
+```
+stack exec shake
+```
 ## run
 ### just run repl with below.
 ```
