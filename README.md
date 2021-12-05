@@ -1,8 +1,9 @@
 # docker-sml
 
 * Docker image for Standard ML of New Jersey https://www.smlnj.org/
-* Base image is ubuntu.
+* Base image is ubuntu and debian.
 * DockerTags = version-${sml ver}-${image version}
+* in dockerhub https://hub.docker.com/r/ynishi/docker-sml
 
 ## build
 ```
