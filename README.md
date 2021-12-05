@@ -6,6 +6,7 @@
 
 ## build
 ```
+cd ${os_dir}
 docker build -t sml:latest .
 ```
 
