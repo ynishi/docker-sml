@@ -1,11 +1,13 @@
 # docker-sml
 
 * Docker image for Standard ML of New Jersey https://www.smlnj.org/
-* Base image is ubuntu. 
+* Base image is ubuntu and debian.
 * DockerTags = version-${sml ver}-${image version}
+* in dockerhub https://hub.docker.com/r/ynishi/docker-sml
 
 ## build
 ```
+cd ${os_dir}
 docker build -t sml:latest .
 ```
 
@@ -26,7 +28,7 @@ docker run --rm -it -e RLWRAP_OPTS="-s 10000" ynishi/docker-sml
 ```
 ### use file example
 ```
-echo "fun x = {x}" > test.sml
+echo "fun f n = n;" > test.sml
 docker run --rm -it -v $(pwd):/app ynishi/docker-sml
 - use "test.sml";
 [opening test.sml]
